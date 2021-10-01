@@ -11,7 +11,7 @@ Route::post('/playgrounds', function (Request $request) {
         'html' => 'required|string|max:500000',
         'css' => 'required|string|max:500000',
         'config' => 'required|string|max:500000',
-        'version' => 'string|in:1,2',
+        'version' => 'string|in:1,2,3',
     ]);
 
     $hash = md5(implode('.', $request->only(['html', 'css', 'config', 'version'])));
