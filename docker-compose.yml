@@ -1,0 +1,23 @@
+version: "2"
+
+services:
+  play:
+    image: jungleran/drupal:public
+    container_name: play
+    volumes:
+      - ./:/var/www/html
+      - /home/j/.composer:/root/.composer
+    restart: always
+    ports:
+      - 9999:80
+  db:
+    image: mysql:8.0.31
+    container_name: playdb
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpass
+    volumes:
+      - ./mysql:/var/lib/mysql
+    restart: always
+
+#  docker-compose -p play -f docker-compose.yml up -d
+#  docker-compose -p play -f docker-compose.yml down
